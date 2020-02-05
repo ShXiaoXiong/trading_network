@@ -5,7 +5,8 @@
     <ProjectGuid>334ca3ed-fae8-4a82-9c69-1d1193b9487e</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>trading_network.py</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,13 +24,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="data_restructure.py">
+    <Compile Include="train_model.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="test.py">
+    <Compile Include="test_model.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="trading_network.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
