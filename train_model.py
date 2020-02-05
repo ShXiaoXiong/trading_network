@@ -68,7 +68,6 @@ for xx in range(data.shape[1]):
 
 new_data = (data-normalization1)/normalization2
 
-
 #创建神经网络
 n=Neuralnetworks(250*np.shape(data)[1] ,200,2,0.015)
 
