@@ -68,8 +68,10 @@ for xx in range(data.shape[1]):
 
 new_data = (data-normalization1)/normalization2
 
+pace=60 #前多少个交易日
+
 #创建神经网络
-n=Neuralnetworks(250*np.shape(data)[1] ,200,2,0.015)
+n=Neuralnetworks(pace*np.shape(data)[1] ,20,2,0.3)
 
 #计分板：每一代的最终净值、两个矩阵
 final_scores=[]
@@ -79,11 +81,10 @@ out_matrix=[]
 #80%断点
 duandian=int(0.8*len(data))
 
-
 for e in range(100):#epochs
 
     #初始条件
-    t=251#第一个预测值的位置
+    t=pace+1#第一个预测值的位置
     cash=10000
     equity=0
     net_value=cash + equity
@@ -97,7 +98,7 @@ for e in range(100):#epochs
     #训练
     while t <= duandian: #预测器能运动到断点
     
-        inputs=new_data[t-249:t+1,:].reshape(1,-1).T#预测器的第一个索引位置是249，输入数据的位置是[0:250]。转置
+        inputs=new_data[t-(pace-1):t+1,:].reshape(1,-1).T#预测器的第一个索引位置。转置
         
         #计算过程
         hidden_inputs=np.dot(n.ihw,inputs)#点乘

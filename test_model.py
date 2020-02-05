@@ -36,7 +36,9 @@ class Neuralnetworks:
         #设定激活函数:使用sigmoid函数，一个常用的非线性激活函数，接受任何数值，输出0到1之间的某个值，但不包含0和1
         self.activation_function=lambda x:scipy.special.expit(x)
 
-n=Neuralnetworks(1000,200,2,0.015)
+pace=60
+
+n=Neuralnetworks(pace*np.shape(data)[1] ,20,2,0.3)
 
 #打开神经网络数据
 f1=open("in_matrix.csv","rb")
@@ -64,7 +66,7 @@ net_values=[]
 #训练
 while t <= len(data)-3: 
     
-    inputs=new_data[t-249:t+1,:].reshape(1,-1).T#预测器的第一个索引位置是249，输入数据的位置是[0:250]。转置
+    inputs=new_data[t-(pace-1):t+1,:].reshape(1,-1).T#预测器的第一个索引位置。转置
         
     #计算过程
     hidden_inputs=np.dot(n.ihw,inputs)#点乘
@@ -80,7 +82,6 @@ while t <= len(data)-3:
     #对比
     closing_0= data[t+1][0]
     closing_1= data[t+2][0]
-
 
     if closing_1>=closing_0:
         correct_label=1
@@ -111,7 +112,7 @@ while t <= len(data)-3:
 
     net_value=cash + equity
     net_values.append(net_value)
-
+ 
     #target值
     targets=np.zeros(2)+0.01 
 
@@ -151,7 +152,6 @@ x=range(len(actions))
 plt.plot(x,y,linewidth=2,color='r',marker='o', markerfacecolor='yellow',markersize=3) 
 
 closing_prices= data[duandian +3:,0]
-print(closing_prices)
 
 #图一
 plt.subplot(313)
@@ -161,6 +161,3 @@ plt.plot(x1,closing_prices,linewidth=2,color='g',marker='o', markerfacecolor='bl
 x2=range(len(net_values))
 plt.plot(x2,net_values,linewidth=2,color='r',marker='o', markerfacecolor='red',markersize=3) 
 plt.show()
-
-print(len(closing_prices))
-print(len(net_values))
