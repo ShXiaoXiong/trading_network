@@ -3,7 +3,7 @@
 ## 使用方法
 1、准备数据 <br>
 参照下图的格式，准备一个csv格式的数据集：
-![Image text](https://github.com/your_github/address/blob/master/image/1.png)
+![Image text](https://github.com/ShXiaoXiong/trading_network/blob/master/20200205095711.png)<br>
 代码会将数据拆分为2部分，前80%为训练数据，后20%为测试数据。
 注意：
 * 第一列建议是时间
